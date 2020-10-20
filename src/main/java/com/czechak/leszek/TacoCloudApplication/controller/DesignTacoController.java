@@ -1,5 +1,6 @@
 package com.czechak.leszek.TacoCloudApplication.controller;
 
+import com.czechak.leszek.TacoCloudApplication.model.Design;
 import com.czechak.leszek.TacoCloudApplication.model.tacos.Ingredient;
 import com.czechak.leszek.TacoCloudApplication.model.tacos.Taco.Taco;
 import com.czechak.leszek.TacoCloudApplication.model.tacos.Type;
@@ -7,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Arrays;
@@ -48,6 +50,14 @@ public class DesignTacoController {
                 .stream()
                 .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping
+    public String processDesign(Design design) {
+// Zapisanie projektu przygotowanego taco…
+// Tym się zajmiesz w rozdziale 3.
+        log.info("Przetwarzanie projektu taco: " + design);
+        return "redirect:/orders/current";
     }
 }
 
